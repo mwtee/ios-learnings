@@ -11,12 +11,14 @@ struct ContentView: View {
 
     let menu = Bundle.main.decode([MenuSection].self, from: "menu.json")
 
+    
     var body: some View {
         NavigationView {
             List {
                 ForEach(menu) { section in
                     Section(
-                        header: Text(section.name),
+                        header: Text(section.name)
+                            .font(.headline),
                         content: {
                             ForEach(section.items) {
                                 ItemRow(item: $0)
