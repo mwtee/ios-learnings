@@ -21,6 +21,7 @@
 		CCD249C925BD7E3B00CA5E25 /* ItemDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD249C825BD7E3B00CA5E25 /* ItemDetails.swift */; };
 		CCD249D125BDA1E200CA5E25 /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD249D025BDA1E200CA5E25 /* OrderView.swift */; };
 		CCD249F125BED01200CA5E25 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD249F025BED01200CA5E25 /* AppView.swift */; };
+		CCD249F625BEDE6700CA5E25 /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD249F525BEDE6700CA5E25 /* CheckoutView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		CCD249C825BD7E3B00CA5E25 /* ItemDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetails.swift; sourceTree = "<group>"; };
 		CCD249D025BDA1E200CA5E25 /* OrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
 		CCD249F025BED01200CA5E25 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
+		CCD249F525BEDE6700CA5E25 /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 				CCD249AB25BD32C000CA5E25 /* ItemRow.swift */,
 				CCD249C825BD7E3B00CA5E25 /* ItemDetails.swift */,
 				CCD249D025BDA1E200CA5E25 /* OrderView.swift */,
+				CCD249F525BEDE6700CA5E25 /* CheckoutView.swift */,
 				CCD249F025BED01200CA5E25 /* AppView.swift */,
 				CC40531A25B84D3F0012CE33 /* Assets.xcassets */,
 				CC40531F25B84D3F0012CE33 /* Info.plist */,
@@ -286,6 +289,7 @@
 			files = (
 				CC40531925B84D390012CE33 /* ContentView.swift in Sources */,
 				CCD249D125BDA1E200CA5E25 /* OrderView.swift in Sources */,
+				CCD249F625BEDE6700CA5E25 /* CheckoutView.swift in Sources */,
 				CCD249F125BED01200CA5E25 /* AppView.swift in Sources */,
 				CC40531725B84D390012CE33 /* iDineApp.swift in Sources */,
 				CC40534F25B84E7B0012CE33 /* Order.swift in Sources */,
