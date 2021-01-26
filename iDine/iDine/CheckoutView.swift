@@ -18,6 +18,12 @@ struct CheckoutView: View {
     @State private var addLoyaltyDetails = false
     @State private var loyaltyNumber = ""
 
+    var totalPrice: Double {
+        let total = Double(order.total)
+        let tipValue = total / 100 * Double(Self.tipAmounts[tipAmount])
+        return total + tipValue
+    }
+
     var body: some View {
         Form {
             Section {
@@ -42,7 +48,7 @@ struct CheckoutView: View {
                 }
             }
 
-            Section(header: Text("Total: $100")) {
+            Section(header: Text("Total: $\(totalPrice, specifier: "%.2f")")) {
                 Button("Confirm order") {
 
                 }
