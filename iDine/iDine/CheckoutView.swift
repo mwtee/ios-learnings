@@ -17,6 +17,7 @@ struct CheckoutView: View {
     @State private var paymentType = 0
     @State private var addLoyaltyDetails = false
     @State private var loyaltyNumber = ""
+    @State private var showingPaymentAlert = false
 
     var totalPrice: Double {
         let total = Double(order.total)
@@ -50,11 +51,21 @@ struct CheckoutView: View {
 
             Section(header: Text("Total: $\(totalPrice, specifier: "%.2f")")) {
                 Button("Confirm order") {
-
+                    self.showingPaymentAlert.toggle()
                 }
             }
         }
         .navigationBarTitle("Payment", displayMode: .inline)
+        .alert(isPresented: $showingPaymentAlert, content: {
+            let messageText = Text(
+                "Your total was $\(totalPrice, specifier: "%.2f") – thank you!"
+            )
+            return Alert(
+                title: Text("Order confirmed"),
+                message: messageText,
+                dismissButton: .default(Text("OK"))
+            )
+        })
     }
 }
 
