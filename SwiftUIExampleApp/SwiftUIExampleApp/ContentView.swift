@@ -20,7 +20,7 @@ struct ContentView: View {
                 LazyHGrid(rows: rows, alignment: .top, spacing: 10) {
                     ForEach(items, id: \.self) { item in
                         VStack {
-                            PartnerView()
+                            PartnerThumbnailView()
                             PartnerDescriptionView()
                         }
                     }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PartnerView: View {
+struct PartnerThumbnailView: View {
     var body: some View {
         Image("carousel")
             .resizable()
@@ -15,8 +15,8 @@ struct PartnerView: View {
     }
 }
 
-struct PartnerView_Previews: PreviewProvider {
+struct PartnerThumbnailView_Previews: PreviewProvider {
     static var previews: some View {
-        PartnerView()
+        PartnerThumbnailView()
     }
 }

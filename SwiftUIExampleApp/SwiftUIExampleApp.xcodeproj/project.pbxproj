@@ -13,7 +13,7 @@
 		CC0D99D525C194C6000B37ED /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC0D99D425C194C6000B37ED /* Preview Assets.xcassets */; };
 		CC0D99E025C194C7000B37ED /* SwiftUIExampleAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0D99DF25C194C7000B37ED /* SwiftUIExampleAppTests.swift */; };
 		CC0D99EB25C194C7000B37ED /* SwiftUIExampleAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0D99EA25C194C7000B37ED /* SwiftUIExampleAppUITests.swift */; };
-		CC0D9A4C25C2EB34000B37ED /* PartnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0D9A4B25C2EB34000B37ED /* PartnerView.swift */; };
+		CC0D9A4C25C2EB34000B37ED /* PartnerThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0D9A4B25C2EB34000B37ED /* PartnerThumbnailView.swift */; };
 		CCE4DE9325C677CC0014CE27 /* PartnerDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE4DE9225C677CC0014CE27 /* PartnerDescriptionView.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,7 +47,7 @@
 		CC0D99E625C194C7000B37ED /* SwiftUIExampleAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUIExampleAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC0D99EA25C194C7000B37ED /* SwiftUIExampleAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExampleAppUITests.swift; sourceTree = "<group>"; };
 		CC0D99EC25C194C7000B37ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CC0D9A4B25C2EB34000B37ED /* PartnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerView.swift; sourceTree = "<group>"; };
+		CC0D9A4B25C2EB34000B37ED /* PartnerThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerThumbnailView.swift; sourceTree = "<group>"; };
 		CCE4DE9225C677CC0014CE27 /* PartnerDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerDescriptionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,7 +104,7 @@
 				CC0D99D125C194C6000B37ED /* Assets.xcassets */,
 				CC0D99D625C194C6000B37ED /* Info.plist */,
 				CC0D99D325C194C6000B37ED /* Preview Content */,
-				CC0D9A4B25C2EB34000B37ED /* PartnerView.swift */,
+				CC0D9A4B25C2EB34000B37ED /* PartnerThumbnailView.swift */,
 				CCE4DE9225C677CC0014CE27 /* PartnerDescriptionView.swift */,
 			);
 			path = SwiftUIExampleApp;
@@ -268,7 +268,7 @@
 				CC0D99D025C194C0000B37ED /* ContentView.swift in Sources */,
 				CC0D99CE25C194C0000B37ED /* SwiftUIExampleAppApp.swift in Sources */,
 				CCE4DE9325C677CC0014CE27 /* PartnerDescriptionView.swift in Sources */,
-				CC0D9A4C25C2EB34000B37ED /* PartnerView.swift in Sources */,
+				CC0D9A4C25C2EB34000B37ED /* PartnerThumbnailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
