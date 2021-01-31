@@ -11,7 +11,7 @@ struct PartnerDescriptionView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text("MYER")
-            Spacer().frame(height: 100)
+            Spacer().frame(height: 40)
             HStack {
                 Spacer()
                 Image("myer")

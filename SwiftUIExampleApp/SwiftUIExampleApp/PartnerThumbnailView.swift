@@ -11,7 +11,7 @@ struct PartnerThumbnailView: View {
     var body: some View {
         Image("carousel")
             .resizable()
-            .frame(width: 200, height: 250)
+            .frame(width: 130, height: 150)
     }
 }
 
