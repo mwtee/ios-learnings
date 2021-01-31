@@ -18,7 +18,8 @@ struct PartnerDescriptionView: View {
                     .resizable()
                     .frame(width: 60, height: 60)
             }
-        }.padding()
+        }
+        .padding(.all, 15)
     }
 }
 
