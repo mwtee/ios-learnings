@@ -11,36 +11,37 @@ struct ContentView: View {
     let items = 1...10
 
     let rows = [
-        GridItem(.fixed(1)),
+        GridItem(alignment: .top)
     ]
 
     var body: some View {
-        GeometryReader { geometry in
-            VStack {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    LazyHGrid(rows: rows, alignment: .top) {
-                        ForEach(items, id: \.self) { item in
-                            Text("Heading\(item)")
+        VStack {
+            ScrollView(.horizontal, showsIndicators: false) {
+                LazyHGrid(rows: rows, alignment: .top, spacing: 10) {
+                    ForEach(items, id: \.self) { item in
+                        VStack {
+                            PartnerView()
+                            PartnerDescriptionView()
                         }
-                    }.background(Color.red)
-                }.frame(height: 100, alignment: .center)
+                    }
+                }.background(Color.red)
+            }.frame(height: 600, alignment: .center)
 
-                ScrollView(.horizontal, showsIndicators: false) {
-                    LazyHGrid(rows: rows, alignment: .top) {
-                        ForEach(items, id: \.self) { item in
-                            Text("Heading\(item)")
-                        }
-                    }.background(Color.blue)
-                }.frame(height: 100, alignment: .center)
+            ScrollView(.horizontal, showsIndicators: false) {
+                LazyHGrid(rows: rows, alignment: .top) {
+                    ForEach(items, id: \.self) { item in
+                        Text("Heading\(item)")
+                    }
+                }.background(Color.blue)
+            }.frame(height: 100, alignment: .center)
 
-                ScrollView(.horizontal, showsIndicators: false) {
-                    LazyHGrid(rows: rows, alignment: .top) {
-                        ForEach(items, id: \.self) { item in
-                            Text("Heading\(item)")
-                        }
-                    }.background(Color.green)
-                }.frame(height: 100, alignment: .center)
-            }
+            ScrollView(.horizontal, showsIndicators: false) {
+                LazyHGrid(rows: rows, alignment: .top) {
+                    ForEach(items, id: \.self) { item in
+                        Text("Heading\(item)")
+                    }
+                }.background(Color.green)
+            }.frame(height: 100, alignment: .center)
         }
     }
 }
