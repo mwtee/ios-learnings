@@ -18,21 +18,8 @@ struct ContentView: View {
         ScrollView {
             VStack {
                 PartnerCarouselView()
-                ScrollView(.horizontal, showsIndicators: false) {
-                    LazyHGrid(rows: rows, alignment: .top, spacing: 10) {
-                        ForEach(items, id: \.self) { item in
-                            PartnerCarouselItemView()
-                        }
-                    }
-                }
-
-                ScrollView(.horizontal, showsIndicators: false) {
-                    LazyHGrid(rows: rows, alignment: .top, spacing: 10) {
-                        ForEach(items, id: \.self) { item in
-                            PartnerCarouselItemView()
-                        }
-                    }
-                }
+                PartnerCarouselView()
+                PartnerCarouselView()
             }
         }
     }

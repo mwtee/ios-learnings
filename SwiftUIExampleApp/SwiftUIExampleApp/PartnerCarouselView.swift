@@ -16,15 +16,16 @@ struct PartnerCarouselView: View {
     ]
 
     var body: some View {
-        VStack {
-            Text("100")
+        VStack(alignment: .leading) {
+            PartnerTitleView()
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHGrid(rows: rows, alignment: .top, spacing: 10) {
                     ForEach(items, id: \.self) { item in
                         PartnerCarouselItemView()
                     }
                 }
-            }
+            }.frame(height: 350)
+
         }
     }
 }
