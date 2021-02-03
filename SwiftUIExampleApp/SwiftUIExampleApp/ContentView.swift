@@ -17,6 +17,7 @@ struct ContentView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
+                SearchView()
                 PartnerCarouselView()
                 PartnerCarouselView()
                 PartnerCarouselView()
