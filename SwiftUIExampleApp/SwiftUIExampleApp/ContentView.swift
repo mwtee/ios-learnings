@@ -15,13 +15,20 @@ struct ContentView: View {
     ]
 
     var body: some View {
-        ScrollView {
-            VStack(spacing: 20) {
-                SearchView()
-                PartnerCarouselView()
-                PartnerCarouselView()
-                PartnerCarouselView()
+        ZStack(alignment: .top) {
+            ScrollView {
+                VStack(spacing: 20) {
+                    Spacer().frame(height: 120)
+                    PartnerCarouselView()
+                    PartnerCarouselView()
+                    PartnerCarouselView()
+                }
             }
+            SearchView()
+                .clipShape(
+                    RoundedRectangle(cornerRadius: 25)
+                )
+                .padding()
         }
     }
 }
