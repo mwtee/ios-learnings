@@ -24,8 +24,7 @@ struct PartnerCarouselView: View {
                         PartnerCarouselItemView()
                     }
                 }
-            }.frame(height: 350)
-
+            }.frame(height: 310)
         }
     }
 }

@@ -12,7 +12,7 @@ struct PartnerCarouselItemView: View {
         let roundedRectangle = RoundedRectangle(cornerRadius: 25)
         VStack {
             PartnerThumbnailView()
-            PartnerDescriptionView()
+            PartnerDescriptionView().frame(height: 150)
         }
         .clipShape(roundedRectangle)
         .overlay(
