@@ -18,7 +18,7 @@ struct ContentView: View {
         ZStack(alignment: .top) {
             ScrollView {
                 VStack(spacing: 20) {
-                    Spacer().frame(height: 120)
+                    Spacer().frame(height: 180)
                     PartnerCarouselView()
                     PartnerCarouselView()
                     PartnerCarouselView()

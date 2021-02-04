@@ -10,9 +10,20 @@ import SwiftUI
 struct SearchView: View {
 
     @State private var isPresented = false
+    @State private var searchInput: String = ""
 
     var body: some View {
         VStack {
+            HStack {
+                Image("search_icon2")
+                    .resizable()
+                    .frame(width: 22, height: 22)
+                    .padding(.leading, 15)
+            TextField("Search brands, products, stores...", text: $searchInput)
+                .background(Color.white)
+                .padding(EdgeInsets(top: 25, leading: 15, bottom: 15, trailing: 15))
+            }
+
             HStack {
                 Image("afterpay_logo").resizable().frame(width: 221, height: 90)
 
@@ -49,4 +60,13 @@ struct EmptyView: View {
     var body: some View {
         Text("Empty")
     }
+}
+
+extension HorizontalAlignment {
+    private enum OneThird : AlignmentID {
+        static func defaultValue(in d: ViewDimensions) -> CGFloat {
+            return d.width / 3
+        }
+    }
+    static let oneThird = HorizontalAlignment(OneThird.self)
 }
