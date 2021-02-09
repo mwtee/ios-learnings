@@ -25,7 +25,7 @@ struct SearchView: View {
             }
 
             HStack {
-                Image("afterpay_logo").resizable().frame(width: 221, height: 90)
+                Image("placeholder_logo").resizable().frame(width: 221, height: 50).padding()
 
                 Spacer()
 
