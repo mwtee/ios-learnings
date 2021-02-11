@@ -42,8 +42,9 @@ struct OrderView: View {
 }
 
 struct OrderView_Previews: PreviewProvider {
-    static let order = Order()
     static var previews: some View {
-        OrderView().environmentObject(order)
+        let order = Order()
+        order.add(item: MenuItem.example)
+        return OrderView().environmentObject(order)
     }
 }
