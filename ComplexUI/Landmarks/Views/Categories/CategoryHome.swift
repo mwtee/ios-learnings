@@ -14,9 +14,15 @@ struct CategoryHome: View {
     var body: some View {
         NavigationView {
             List {
+                modelData.features[0].image
+                    .resizable()
+                    .scaledToFill()
+                    .frame(height: 200)
+                    .clipped()
+
                 ForEach(modelData.categories.keys.sorted(), id: \.self) { key in
-                    Text(key)
-                }
+                    CategoryRow(categoryName: key, items: modelData.categories[key]!)
+                }.listRowInsets(EdgeInsets())
             }
             .navigationTitle("Featured")
         }
@@ -25,6 +31,7 @@ struct CategoryHome: View {
 
 struct CategoryHome_Previews: PreviewProvider {
     static var previews: some View {
-        CategoryHome().environmentObject(ModelData())
+        CategoryHome()
+            .environmentObject(ModelData())
     }
 }
