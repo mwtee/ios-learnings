@@ -51,6 +51,7 @@ final class HTTPClient: HTTPClientType {
                 return $0.data
             }
             .decode(type: T.self, decoder: JSONDecoder())
+            .mapError(HTTPClientError.decoding)
             .receive(on: queue)
             .retry(retries)
             .eraseToAnyPublisher()
@@ -59,4 +60,5 @@ final class HTTPClient: HTTPClientType {
 enum HTTPClientError: Error {
     case noResponse
     case errorCode(Int)
+    case decoding(Error)
 }
