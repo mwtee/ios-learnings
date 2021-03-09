@@ -8,7 +8,11 @@
 import Combine
 import Foundation
 
-final class PokemonService {
+protocol PokemonServiceType {
+    func getPokemonList() -> AnyPublisher<PokemonListResponse, Error>
+}
+
+final class PokemonService: PokemonServiceType {
     
     private let httpClient: HTTPClientType
     
@@ -17,7 +21,8 @@ final class PokemonService {
     }
     
     func getPokemonList() -> AnyPublisher<PokemonListResponse, Error> {
-        let url = URL(string: "https://pokeapi.co/api/v2/pokemon?limit=100&offset=200")!
-        return httpClient.perform(request: URLRequest(url: url))
+        let url = URL(string: "https://pokeapi.co/api/v2/pokemon?limit=100")!
+        let pokemonListRequest: AnyPublisher<PokemonListResponse, Error> = httpClient.perform(request: URLRequest(url: url))
+        return pokemonListRequest
     }
 }

@@ -11,11 +11,11 @@ import Foundation
 class PokemonListViewModel: ObservableObject, Identifiable {
     @Published var pokemonModels: [PokemonSummaryModel] = []
     
-    private let pokemonService: PokemonService
+    private let pokemonService: PokemonServiceType
     
     private var disposables = Set<AnyCancellable>()
     
-    init(pokemonService: PokemonService) {
+    init(pokemonService: PokemonServiceType) {
         self.pokemonService = pokemonService
     }
     
