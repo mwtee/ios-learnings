@@ -21,14 +21,3 @@ final class PokemonService {
         return httpClient.perform(request: URLRequest(url: url))
     }
 }
-
-struct PokemonListResponse: Decodable {
-    
-    let results: [Result]
-    
-    struct Result: Decodable {
-        let name: String
-        let url: String
-    }
-    
-}
