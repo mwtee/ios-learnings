@@ -45,7 +45,8 @@ final class HTTPClient: HTTPClientType {
                     throw HTTPClientError.noResponse
                 }
                 
-                if response.statusCode != 200 {
+                let successfulStatusCodeRange = 200...299
+                if !successfulStatusCodeRange.contains(response.statusCode)  {
                     throw HTTPClientError.errorCode(response.statusCode)
                 }
                 return $0.data
