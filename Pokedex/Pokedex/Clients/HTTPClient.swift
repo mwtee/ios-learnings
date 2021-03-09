@@ -13,7 +13,7 @@ protocol HTTPClientType {
         request: URLRequest,
         queue: DispatchQueue,
         retries: Int
-    ) -> AnyPublisher<T, Error>
+    ) -> AnyPublisher<T, HTTPClientError>
 }
 
 extension HTTPClientType {
@@ -21,7 +21,7 @@ extension HTTPClientType {
         request: URLRequest,
         queue: DispatchQueue = .main,
         retries: Int = 0
-    ) -> AnyPublisher<T, Error> {
+    ) -> AnyPublisher<T, HTTPClientError> {
         return perform(request: request, queue: queue, retries: retries)
     }
 }
@@ -37,7 +37,7 @@ final class HTTPClient: HTTPClientType {
         request: URLRequest,
         queue: DispatchQueue = .main,
         retries: Int = 0
-    ) -> AnyPublisher<T, Error>
+    ) -> AnyPublisher<T, HTTPClientError>
     {
         return session.dataTaskPublisher(for: request)
             .tryMap {
@@ -51,14 +51,26 @@ final class HTTPClient: HTTPClientType {
                 return $0.data
             }
             .decode(type: T.self, decoder: JSONDecoder())
-            .mapError(HTTPClientError.decoding)
+            .mapError({ error in
+              switch error {
+              case is Swift.DecodingError:
+                return HTTPClientError.decoding(error: error)
+              case let urlError as URLError:
+                return HTTPClientError.sessionFailed(error: urlError)
+              default:
+                return HTTPClientError.other(error)
+              }
+            })
             .receive(on: queue)
             .retry(retries)
             .eraseToAnyPublisher()
     }
 }
+
 enum HTTPClientError: Error {
     case noResponse
     case errorCode(Int)
-    case decoding(Error)
+    case decoding(error: Error)
+    case sessionFailed(error: URLError)
+    case other(Error)
 }

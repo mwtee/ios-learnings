@@ -9,7 +9,7 @@ import Combine
 import Foundation
 
 protocol PokemonServiceType {
-    func getPokemonList() -> AnyPublisher<PokemonListResponse, Error>
+    func getPokemonList() -> AnyPublisher<PokemonListResponse, HTTPClientError>
 }
 
 final class PokemonService: PokemonServiceType {
@@ -20,9 +20,9 @@ final class PokemonService: PokemonServiceType {
         self.httpClient = httpClient
     }
     
-    func getPokemonList() -> AnyPublisher<PokemonListResponse, Error> {
+    func getPokemonList() -> AnyPublisher<PokemonListResponse, HTTPClientError> {
         let url = URL(string: "https://pokeapi.co/api/v2/pokemon?limit=100")!
-        let pokemonListRequest: AnyPublisher<PokemonListResponse, Error> = httpClient.perform(request: URLRequest(url: url))
+        let pokemonListRequest: AnyPublisher<PokemonListResponse, HTTPClientError> = httpClient.perform(request: URLRequest(url: url))
         return pokemonListRequest
     }
 }
