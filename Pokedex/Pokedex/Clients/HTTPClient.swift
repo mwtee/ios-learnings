@@ -47,7 +47,7 @@ final class HTTPClient: HTTPClientType {
                 
                 let successfulStatusCodeRange = 200...299
                 if !successfulStatusCodeRange.contains(response.statusCode)  {
-                    throw HTTPClientError.errorCode(response.statusCode)
+                    throw HTTPClientError.statusCode(response.statusCode)
                 }
                 return $0.data
             }
@@ -57,7 +57,7 @@ final class HTTPClient: HTTPClientType {
               case is Swift.DecodingError:
                 return HTTPClientError.decoding(error: error)
               case let urlError as URLError:
-                return HTTPClientError.sessionFailed(error: urlError)
+                return HTTPClientError.url(error: urlError)
               default:
                 return HTTPClientError.other(error)
               }
@@ -70,8 +70,8 @@ final class HTTPClient: HTTPClientType {
 
 enum HTTPClientError: Error {
     case noResponse
-    case errorCode(Int)
+    case statusCode(Int)
     case decoding(error: Error)
-    case sessionFailed(error: URLError)
+    case url(error: URLError)
     case other(Error)
 }
