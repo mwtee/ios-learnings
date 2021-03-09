@@ -8,7 +8,25 @@
 import Combine
 import Foundation
 
-final class HTTPClient {
+protocol HTTPClientType {
+    func perform<T: Decodable>(
+        request: URLRequest,
+        queue: DispatchQueue,
+        retries: Int
+    ) -> AnyPublisher<T, Error>
+}
+
+extension HTTPClientType {
+    func perform<T: Decodable>(
+        request: URLRequest,
+        queue: DispatchQueue = .main,
+        retries: Int = 0
+    ) -> AnyPublisher<T, Error> {
+        return perform(request: request, queue: queue, retries: retries)
+    }
+}
+
+final class HTTPClient: HTTPClientType {
     private let session: URLSession
     
     init(session: URLSession = URLSession(configuration: .default)) {

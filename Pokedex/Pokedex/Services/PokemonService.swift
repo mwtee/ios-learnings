@@ -10,9 +10,9 @@ import Foundation
 
 final class PokemonService {
     
-    private let httpClient: HTTPClient
+    private let httpClient: HTTPClientType
     
-    init(httpClient: HTTPClient) {
+    init(httpClient: HTTPClientType) {
         self.httpClient = httpClient
     }
     
