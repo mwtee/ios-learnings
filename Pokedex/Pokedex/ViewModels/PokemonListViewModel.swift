@@ -8,7 +8,13 @@
 import Combine
 import Foundation
 
-class PokemonListViewModel: ObservableObject {
+protocol PokemonListViewModelType: ObservableObject {
+    var pokemonModels: [PokemonSummaryModel] { get set }
+    var state: PokemonListViewModel.State { get set }
+    func fetchPokemonList()
+}
+
+class PokemonListViewModel: PokemonListViewModelType {
     @Published var pokemonModels: [PokemonSummaryModel] = []
     @Published var state: State = .initial
     

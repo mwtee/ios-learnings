@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct PokemonListView: View {
+struct PokemonListView<ViewModel: PokemonListViewModelType>: View {
     
-    @ObservedObject private var viewModel: PokemonListViewModel
+    @ObservedObject private var viewModel: ViewModel
     
-    init(viewModel: PokemonListViewModel) {
+    init(viewModel: ViewModel) {
         self.viewModel = viewModel
     }
     
@@ -37,12 +37,18 @@ struct PokemonListView: View {
 
 struct PokemonListView_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonListView(viewModel:
-                        PokemonListViewModel(
-                            pokemonService: PokemonService(
-                                httpClient: HTTPClient()
-                            )
-                        )
-        )
+        PokemonListView(viewModel: MockPokemonListViewModel())
+    }
+}
+
+private final class MockPokemonListViewModel: PokemonListViewModelType, ObservableObject {
+    @Published var state: PokemonListViewModel.State = .initial
+    var pokemonModels: [PokemonSummaryModel] = []
+    
+    func fetchPokemonList() {
+        state = .loaded(pokemonModels: [
+            PokemonSummaryModel(name: "charmander"),
+            PokemonSummaryModel(name: "pikachu")
+        ])
     }
 }
