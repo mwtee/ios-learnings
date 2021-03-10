@@ -8,7 +8,7 @@
 import Combine
 import Foundation
 
-class PokemonListViewModel: ObservableObject, Identifiable {
+class PokemonListViewModel: ObservableObject {
     @Published var pokemonModels: [PokemonSummaryModel] = []
     @Published var state: State = .initial
     
