@@ -43,7 +43,6 @@ struct PokemonListView_Previews: PreviewProvider {
 
 private final class MockPokemonListViewModel: PokemonListViewModelType, ObservableObject {
     @Published var state: PokemonListViewModel.State = .initial
-    var pokemonModels: [PokemonSummaryModel] = []
     
     func fetchPokemonList() {
         state = .loaded(pokemonModels: [
