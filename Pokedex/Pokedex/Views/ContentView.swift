@@ -10,40 +10,20 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @ObservedObject private var viewModel: PokemonListViewModel
+    private let httpClient: HTTPClientType
     
-    init(viewModel: PokemonListViewModel) {
-        self.viewModel = viewModel
+    init(httpClient: HTTPClientType) {
+        self.httpClient = httpClient
     }
     
     var body: some View {
-        switch viewModel.state {
-        case .initial:
-            Text("Initial state").onAppear(perform: {
-                viewModel.fetchPokemonList()
-            })
-        case .loaded(let pokemonModels):
-            List {
-                ForEach(pokemonModels) { pokemonModel in
-                    Text(pokemonModel.name)
-                }
-            }
-        case .loading:
-            ProgressView()
-        case .error:
-            Text("Error state")
-        }
+        let viewModel = PokemonListViewModel(pokemonService: PokemonService(httpClient: httpClient))
+        PokemonListView(viewModel: viewModel)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(viewModel:
-                        PokemonListViewModel(
-                            pokemonService: PokemonService(
-                                httpClient: HTTPClient()
-                            )
-                        )
-        )
+        ContentView(httpClient: HTTPClient())
     }
 }

@@ -11,12 +11,7 @@ import SwiftUI
 struct PokedexApp: App {
     var body: some Scene {
         WindowGroup {
-            let viewModel = PokemonListViewModel(
-                pokemonService: PokemonService(
-                    httpClient: HTTPClient()
-                )
-            )
-            ContentView(viewModel: viewModel)
+            ContentView(httpClient: HTTPClient())
         }
     }
 }
