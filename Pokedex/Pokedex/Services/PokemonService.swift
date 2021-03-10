@@ -22,7 +22,6 @@ final class PokemonService: PokemonServiceType {
     
     func getPokemonList() -> AnyPublisher<PokemonListResponse, HTTPClientError> {
         let url = URL(string: "https://pokeapi.co/api/v2/pokemon?limit=100")!
-        let pokemonListRequest: AnyPublisher<PokemonListResponse, HTTPClientError> = httpClient.performJsonDecodableGetRequest(request: URLRequest(url: url))
-        return pokemonListRequest
+        return httpClient.performJsonDecodableGetRequest(request: URLRequest(url: url))
     }
 }
