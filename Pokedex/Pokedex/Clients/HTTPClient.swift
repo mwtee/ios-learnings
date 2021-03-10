@@ -9,7 +9,7 @@ import Combine
 import Foundation
 
 protocol HTTPClientType {
-    func perform<T: Decodable>(
+    func performJsonDecodableGetRequest<T: Decodable>(
         request: URLRequest,
         queue: DispatchQueue,
         retries: Int
@@ -17,12 +17,12 @@ protocol HTTPClientType {
 }
 
 extension HTTPClientType {
-    func perform<T: Decodable>(
+    func performJsonDecodableGetRequest<T: Decodable>(
         request: URLRequest,
         queue: DispatchQueue = .main,
         retries: Int = 0
     ) -> AnyPublisher<T, HTTPClientError> {
-        return perform(request: request, queue: queue, retries: retries)
+        return performJsonDecodableGetRequest(request: request, queue: queue, retries: retries)
     }
 }
 
@@ -33,7 +33,7 @@ final class HTTPClient: HTTPClientType {
         self.session = session
     }
     
-    func perform<T: Decodable>(
+    func performJsonDecodableGetRequest<T: Decodable>(
         request: URLRequest,
         queue: DispatchQueue = .main,
         retries: Int = 0
