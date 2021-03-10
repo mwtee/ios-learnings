@@ -10,6 +10,7 @@ import Foundation
 
 class PokemonListViewModel: ObservableObject, Identifiable {
     @Published var pokemonModels: [PokemonSummaryModel] = []
+    @Published var state: State = .initial
     
     private let pokemonService: PokemonServiceType
     
@@ -20,18 +21,29 @@ class PokemonListViewModel: ObservableObject, Identifiable {
     }
     
     func fetchPokemonList() {
+        state = .loading
         pokemonService.getPokemonList().receive(on: DispatchQueue.main).sink(
             receiveCompletion: { completion in
                 switch completion {
                 case .failure(let error):
                     print(error)
+                    self.state = .error
                 case .finished:
                     print("finished")
                 }
             },
             receiveValue: { [weak self] pokemonResponse in
                 print(pokemonResponse)
-                self?.pokemonModels = pokemonResponse.results.map(PokemonSummaryModel.map(from:))
+                self?.state = State.loaded(pokemonModels: pokemonResponse.results.map(PokemonSummaryModel.map))
             }).store(in: &disposables)
+    }
+}
+
+extension PokemonListViewModel {
+    enum State {
+        case initial
+        case loaded(pokemonModels: [PokemonSummaryModel])
+        case loading
+        case error
     }
 }

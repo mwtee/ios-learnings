@@ -17,13 +17,22 @@ struct ContentView: View {
     }
     
     var body: some View {
-        List {
-            ForEach(viewModel.pokemonModels) { pokemonModel in
-                Text(pokemonModel.name)
-            }
-        }.onAppear(perform: {
+        switch viewModel.state {
+        case .initial:
+            Text("Initial state").onAppear(perform: {
                 viewModel.fetchPokemonList()
             })
+        case .loaded(let pokemonModels):
+            List {
+                ForEach(pokemonModels) { pokemonModel in
+                    Text(pokemonModel.name)
+                }
+            }
+        case .loading:
+            ProgressView()
+        case .error:
+            Text("Error state")
+        }
     }
 }
 
