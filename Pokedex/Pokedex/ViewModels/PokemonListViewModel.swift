@@ -26,20 +26,22 @@ class PokemonListViewModel: PokemonListViewModelType {
     
     func fetchPokemonList() {
         state = .loading
-        pokemonService.getPokemonList().receive(on: DispatchQueue.main).sink(
-            receiveCompletion: { completion in
-                switch completion {
-                case .failure(let error):
-                    print(error)
-                    self.state = .error
-                case .finished:
-                    print("finished")
-                }
-            },
-            receiveValue: { [weak self] pokemonResponse in
-                print(pokemonResponse)
-                self?.state = State.loaded(pokemonModels: pokemonResponse.results.map(PokemonSummaryModel.map))
-            }).store(in: &disposables)
+        pokemonService.getPokemonList()
+            .map { $0.results.map(PokemonSummaryModel.map) }
+            .receive(on: DispatchQueue.main)
+            .sink(
+                receiveCompletion: { completion in
+                    switch completion {
+                    case .failure(let error):
+                        print(error)
+                        self.state = .error
+                    case .finished:
+                        print("finished")
+                    }
+                },
+                receiveValue: { [weak self] model in
+                    self?.state = State.loaded(pokemonModels: model)
+                }).store(in: &disposables)
     }
 }
 
